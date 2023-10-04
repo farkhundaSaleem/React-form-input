@@ -14,10 +14,7 @@ const [submittedInputs, setSubmittedInputs] = useState([]);
     setInput("");
   };
 
-  const onChangeHandler = (e) => {
-    setInput(e.target.value);
- 
-  };
+
 
   return (
     <div>
@@ -27,7 +24,7 @@ const [submittedInputs, setSubmittedInputs] = useState([]);
           <input
             type="text"
             id="typo"
-            onChange={onChangeHandler}
+            onChange={(e)=>setInput(e.target.value)}
             value={newInput}
           />
         </div>
