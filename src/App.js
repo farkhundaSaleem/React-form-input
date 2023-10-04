@@ -1,113 +1,71 @@
 
 
-// import React, { useState } from "react";
-// import './App.css'
 
-// const App = () => {
-//   const [newInput, setInput] = useState("");
-// const [submittedInputs, setSubmittedInputs] = useState([]);
-
-   
-//   const onSubmitHandler = (e) => {
-//     e.preventDefault();
-//   setSubmittedInputs([...submittedInputs, newInput])
-//     setInput("");
-//   };
-
-//   const onChangeHandler = (e) => {
-//     setInput(e.target.value);
- 
-//   };
-
-//   return (
-//     <div>
-//       <form onSubmit={onSubmitHandler} >
-//         <div>
-//           <label htmlFor="typo">Enter : </label>
-//           <input
-//             type="text"
-//             id="typo"
-//             onChange={onChangeHandler}
-//             value={newInput}
-//           />
-//         </div>
-
-//         <div>
-//           <button>Click</button>
-//         </div>
-//       </form>
-
-
-//       <div>
-//         <h2>Submitted Inputs:</h2>
-//        <ul>
-//         {submittedInputs.map((input, index)=>
-//           <li key={index}>{input}</li>
-//         )}
-//        </ul>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default App;
-import React, { useState } from "react";
-
-import './App.css';
-
+import React, { useState } from 'react'
+import './App.css'
 const App = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [submittedInputs, setSubmittedInputs] = useState([]);
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    setSubmittedInputs([...submittedInputs, { name, email }]);
-    setName("");
-    setEmail("");
-  };
+
+const[name,setName]=useState("");
+const[email,setEmail]=useState("");
+const[number,setNumber]=useState("");
+const[submittedInputs,setSubmittedInputs]=useState([])
+const onSubmitHandeler=(e)=>{
+  e.preventDefault();
+  setSubmittedInputs([...submittedInputs, {name, email, number}]);
+  setName("");
+  setEmail("");
+  setNumber("");
+}
+
 
   return (
-    <div>
-      <form onSubmit={onSubmitHandler}>
-        <div>
-          <label htmlFor="name">Name: </label>
-          <input
-            type="text"
-            id="name"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="email">Email: </label>
-          <input
-            type="email"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
-        </div>
-
-        
-        <div>
-          <button type="submit">Click</button>
-        </div>
-      </form>
-
+    <>
+    <form onSubmit={onSubmitHandeler}>
       <div>
-        <h2>Submitted Inputs:</h2>
-        <ul>
-          {submittedInputs.map((input, index) => (
-            <li key={index}>
-              Name: {input.name}, Email: {input.email}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-};
+        <label htmlFor="name">Name : </label>
+        <input type="text"  id="name" value={name}
+         onChange={(e)=>{ setName(e.target.value)
 
-export default App;
+        }}/> 
+       
+        <label htmlFor="email">Email : </label>
+        <input type="email"  id="email" value={email}
+         onChange={(e)=>{ setEmail(e.target.value)
+
+        }}/>
+       
+        <label htmlFor="number">Contact No : </label>
+        <input type="number"  id="number" value={number}
+         onChange={(e)=>{ setNumber(e.target.value)
+
+        }}/>
+       
+      </div>
+      <div>
+        <button>Submit</button>
+      </div>
+    </form>
+
+<div>
+<h3>Submitted Inputs</h3>
+{submittedInputs.map((input, index)=>
+<ul key={index}>
+  <li>Name :{input.name} <br />Email :{input.email} <br /> Contact No :{input.number}</li>
+</ul>)}
+</div>
+
+
+
+</>
+
+
+  )
+
+
+
+
+}
+
+export default App
+
